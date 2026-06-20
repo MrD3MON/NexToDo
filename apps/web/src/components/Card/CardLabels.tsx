@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useMutation, useQuery } from "convex/react";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import { api } from "@NexToDo/backend/convex/_generated/api";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 import { Plus, Check, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Badge } from "@/components/ui/badge";

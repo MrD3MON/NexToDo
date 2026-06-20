@@ -1,6 +1,6 @@
 import { Bell, Check, Inbox } from "lucide-react";
 import { useQuery, useMutation } from "convex/react";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { ScrollArea } from "@/components/ui/scroll-area";

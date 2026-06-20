@@ -1,5 +1,5 @@
 import { DragDropContext, Droppable, type DropResult } from "@hello-pangea/dnd";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { useMutation, useQuery } from "convex/react";
 import { Plus, Loader2 } from "lucide-react";
 import { useState, useEffect, useRef, useMemo } from "react";

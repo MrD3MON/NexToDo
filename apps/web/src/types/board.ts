@@ -1,4 +1,4 @@
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 
 // ============================================
 // BOARD TYPES

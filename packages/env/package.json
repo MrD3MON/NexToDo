@@ -1,5 +1,5 @@
 {
-    "name": "@BetterTodo/env",
+    "name": "@NexToDo/env",
     "version": "0.0.0",
     "private": true,
     "type": "module",
@@ -12,7 +12,7 @@
         "zod": "catalog:"
     },
     "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "typescript": "catalog:"
     }
 }

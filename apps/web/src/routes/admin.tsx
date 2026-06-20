@@ -1,4 +1,4 @@
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Authenticated, AuthLoading, Unauthenticated, useMutation, useQuery } from "convex/react";
 import { Shield, Trash2, UserCog, Users, ChevronLeft, Crown, User, Loader2 } from "lucide-react";

@@ -1,7 +1,7 @@
 import { useState, useMemo, useRef } from "react";
 import { useMutation, useQuery } from "convex/react";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import { api } from "@NexToDo/backend/convex/_generated/api";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 import {
     MessageSquare,
     CornerUpRight,

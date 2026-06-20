@@ -46,7 +46,7 @@ export default function AppNav() {
 
     return (
         <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="flex h-12 items-center justify-between gap-4 px-4">
+            <div className="flex h-12 items-center justify-between gap-4 px-4 max-w-6xl mx-auto w-full">
                 {/* Logo */}
                 <Link
                     to="/"

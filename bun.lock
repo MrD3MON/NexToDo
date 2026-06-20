@@ -5,12 +5,12 @@
     "": {
       "name": "BetterTodo",
       "dependencies": {
-        "@BetterTodo/env": "workspace:*",
+        "@NexToDo/env": "workspace:*",
         "dotenv": "^17.3.1",
         "zod": "^4.3.6",
       },
       "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "prettier": "^3.8.1",
         "turbo": "^2.8.10",
         "typescript": "^5.9.3",
@@ -44,8 +44,8 @@
       "name": "web",
       "version": "0.0.0",
       "dependencies": {
-        "@BetterTodo/backend": "workspace:*",
-        "@BetterTodo/env": "workspace:*",
+        "@NexToDo/backend": "workspace:*",
+        "@NexToDo/env": "workspace:*",
         "@base-ui/react": "^1.2.0",
         "@convex-dev/agent": "^0.3.2",
         "@convex-dev/better-auth": "^0.10.11",
@@ -81,7 +81,7 @@
         "zod": "^4.3.6",
       },
       "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "@tanstack/react-router-devtools": "^1.162.4",
         "@tanstack/router-plugin": "^1.162.4",
         "@types/node": "^22.19.11",
@@ -97,7 +97,7 @@
       },
     },
     "packages/backend": {
-      "name": "@BetterTodo/backend",
+      "name": "@NexToDo/backend",
       "version": "1.0.0",
       "dependencies": {
         "@ai-sdk/google": "^2.0.54",
@@ -111,17 +111,17 @@
         "zod": "^4.3.6",
       },
       "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "@types/node": "^24.10.13",
         "typescript": "^5.9.3",
       },
     },
     "packages/config": {
-      "name": "@BetterTodo/config",
+      "name": "@NexToDo/config",
       "version": "0.0.0",
     },
     "packages/env": {
-      "name": "@BetterTodo/env",
+      "name": "@NexToDo/env",
       "version": "0.0.0",
       "dependencies": {
         "@t3-oss/env-core": "^0.13.1",
@@ -129,7 +129,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "typescript": "catalog:",
       },
     },
@@ -144,11 +144,11 @@
     "zod": "^4.1.13",
   },
   "packages": {
-    "@BetterTodo/backend": ["@BetterTodo/backend@workspace:packages/backend"],
+    "@NexToDo/backend": ["@NexToDo/backend@workspace:packages/backend"],
 
-    "@BetterTodo/config": ["@BetterTodo/config@workspace:packages/config"],
+    "@NexToDo/config": ["@NexToDo/config@workspace:packages/config"],
 
-    "@BetterTodo/env": ["@BetterTodo/env@workspace:packages/env"],
+    "@NexToDo/env": ["@NexToDo/env@workspace:packages/env"],
 
     "@ai-sdk/gateway": ["@ai-sdk/gateway@2.0.43", "", { "dependencies": { "@ai-sdk/provider": "2.0.1", "@ai-sdk/provider-utils": "3.0.21", "@vercel/oidc": "3.1.0" }, "peerDependencies": { "zod": "^3.25.76 || ^4.1.8" } }, "sha512-wVrXKw0ldcU04Y8EY3vR+qPdogZCZEj8pnkpRNRF552jqYPPVY88atPiC9s6XOyE+k6Y1YnusYXqwp6KKaBGAA=="],
 

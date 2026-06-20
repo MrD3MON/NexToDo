@@ -1,5 +1,5 @@
 import { MousePointer2 } from "lucide-react";
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 
 interface CursorOverlayProps {
     users: Array<{

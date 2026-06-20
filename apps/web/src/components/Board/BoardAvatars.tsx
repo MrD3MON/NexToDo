@@ -1,4 +1,4 @@
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 

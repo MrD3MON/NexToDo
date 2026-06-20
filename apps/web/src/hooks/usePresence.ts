@@ -6,8 +6,8 @@
 
 // import { useEffect, useState } from "react";
 // import { useQuery, useMutation } from "convex/react";
-// import { api } from "@BetterTodo/backend/convex/_generated/api";
-// import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+// import { api } from "@NexToDo/backend/convex/_generated/api";
+// import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 
 // const HEARTBEAT_INTERVAL = 5000; // 5 seconds
 

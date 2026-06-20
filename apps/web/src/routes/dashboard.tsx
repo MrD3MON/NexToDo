@@ -1,4 +1,4 @@
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Authenticated, AuthLoading, Unauthenticated, useQuery } from "convex/react";
 import { Kanban, ListTodo, CheckCircle2, AlertTriangle, CalendarClock, Plus } from "lucide-react";

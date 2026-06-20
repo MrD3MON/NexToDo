@@ -1,5 +1,7 @@
 # NexToDo
 
+![NexToDo ss](/apps/web/public/demo.png)
+
 A Trello-like collaborative task management app built with React, TanStack Router, Convex, and Better Auth.
 
 ## Features
@@ -129,10 +131,6 @@ cd apps/fumadocs && bun run dev
 ```
 
 Open [http://localhost:4000](http://localhost:4000) for the docs.
-
-## Security
-
-A project security review and remediation summary is available in [`SECURITY_AUDIT.md`](/Users/manav/Developer/BetterTodo/SECURITY_AUDIT.md).
 
 ## License
 

@@ -1,6 +1,6 @@
-# BetterTodo Documentation
+# NexToDo Documentation
 
-Documentation for [BetterTodo](../README.md), built with [Fumadocs](https://fumadocs.dev) and Next.js.
+Documentation for [NexToDo](../README.md), built with [Fumadocs](https://fumadocs.dev) and Next.js.
 
 ## Run Locally
 

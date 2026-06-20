@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useQuery } from "convex/react";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { useNavigate } from "@tanstack/react-router";
 import { Search, LayoutGrid, CreditCard, ArrowRight, CheckCircle2 } from "lucide-react";
 import {

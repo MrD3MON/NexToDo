@@ -1,5 +1,5 @@
 {
-    "name": "@BetterTodo/backend",
+    "name": "@NexToDo/backend",
     "version": "1.0.0",
     "description": "",
     "license": "ISC",
@@ -20,7 +20,7 @@
         "zod": "^4.3.6"
     },
     "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "@types/node": "^24.10.13",
         "typescript": "^5.9.3"
     }

@@ -1,4 +1,4 @@
-import { api } from "@BetterTodo/backend/convex/_generated/api";
+import { api } from "@NexToDo/backend/convex/_generated/api";
 import { Link, useNavigate } from "@tanstack/react-router";
 import { useQuery } from "convex/react";
 import { Shield } from "lucide-react";

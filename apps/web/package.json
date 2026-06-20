@@ -12,8 +12,8 @@
         "generate-pwa-assets": "pwa-assets-generator"
     },
     "dependencies": {
-        "@BetterTodo/backend": "workspace:*",
-        "@BetterTodo/env": "workspace:*",
+        "@NexToDo/backend": "workspace:*",
+        "@NexToDo/env": "workspace:*",
         "@base-ui/react": "^1.2.0",
         "@convex-dev/agent": "^0.3.2",
         "@convex-dev/better-auth": "^0.10.11",
@@ -49,7 +49,7 @@
         "zod": "^4.3.6"
     },
     "devDependencies": {
-        "@BetterTodo/config": "workspace:*",
+        "@NexToDo/config": "workspace:*",
         "@tanstack/react-router-devtools": "^1.162.4",
         "@tanstack/router-plugin": "^1.162.4",
         "@types/node": "^22.19.11",

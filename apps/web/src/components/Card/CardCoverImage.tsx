@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { useMutation } from "convex/react";
-import { api } from "@BetterTodo/backend/convex/_generated/api";
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import { api } from "@NexToDo/backend/convex/_generated/api";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 import { Image as ImageIcon, Upload, X, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 

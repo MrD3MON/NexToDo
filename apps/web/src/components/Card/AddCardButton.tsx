@@ -1,5 +1,5 @@
-import { api } from "@BetterTodo/backend/convex/_generated/api";
-import type { Id } from "@BetterTodo/backend/convex/_generated/dataModel";
+import { api } from "@NexToDo/backend/convex/_generated/api";
+import type { Id } from "@NexToDo/backend/convex/_generated/dataModel";
 import { useMutation } from "convex/react";
 import { Plus, Loader2 } from "lucide-react";
 import { useState } from "react";
