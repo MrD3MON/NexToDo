@@ -1,0 +1,55 @@
+---
+title: Introduction
+description: NexToDo is a Trello-like collaborative task management app built with React, Convex, and Better Auth.
+---
+
+# NexToDo
+
+A Trello-like collaborative task management app built with React, TanStack Router, Convex, and Better Auth.
+
+## Features
+
+<Cards>
+    <Card
+        title="Getting Started"
+        href="/docs/getting-started"
+        description="Setup, install, and run the app"
+    />
+    <Card
+        title="Authentication"
+        href="/docs/authentication"
+        description="Email/password and Google OAuth"
+    />
+    <Card
+        title="Boards & Cards"
+        href="/docs/boards-and-cards"
+        description="Kanban boards, lists, and cards"
+    />
+</Cards>
+
+- **Authentication** – Email/password and Google OAuth via Better Auth.
+- **Email Notifications** – Transactional emails for board invites and @mentions via Resend.
+- **Real-time** – Convex-powered reactive updates across all clients.
+- **PWA** – Progressive Web App support for install and offline readiness.
+- **Dark/Light Mode** – Theme toggle with system preference support.
+
+## Tech Stack
+
+| Layer       | Technology                                        |
+| ----------- | ------------------------------------------------- |
+| Frontend    | React 19, TanStack Router, TailwindCSS, shadcn/ui |
+| Backend     | Convex (BaaS)                                     |
+| Auth        | Better Auth (email + Google OAuth)                |
+| Emails      | Resend                                            |
+| Styling     | TailwindCSS                                       |
+| Drag & Drop | @hello-pangea/dnd                                 |
+
+## Quick Start
+
+```bash
+bun install
+bun run dev:setup
+bun run dev
+```
+
+Open [http://localhost:3001](http://localhost:3001) to use the app.
