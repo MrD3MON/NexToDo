@@ -12,6 +12,7 @@ import {
     ArrowRight,
     CheckCircle2,
     CheckSquare,
+    Heart,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -484,7 +485,7 @@ function LandingContent() {
 
             {/* ── FOOTER ── */}
             <footer className="border-t border-border py-8 px-6 text-center text-muted-foreground text-sm">
-                © {new Date().getFullYear()} NexToDo. Built with ❤️ and Convex.
+                © {new Date().getFullYear()} NexToDo. Built with <Heart className="inline h-3.5 w-3.5 fill-primary/30 text-primary animate-pulse mx-0.5 align-middle" /> and Convex.
             </footer>
         </div>
     );
