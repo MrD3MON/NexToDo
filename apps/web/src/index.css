@@ -6,38 +6,38 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
+    --background: oklch(0.975 0.015 200); /* Soft slate-tinted white */
+    --foreground: oklch(0.24 0.03 200);  /* Deep slate charcoal */
+    --card: oklch(0.99 0.008 200);        /* Crisp white with tiny slate tint */
+    --card-foreground: oklch(0.24 0.03 200);
+    --popover: oklch(0.99 0.008 200);
+    --popover-foreground: oklch(0.24 0.03 200);
+    --primary: oklch(0.38 0.06 200);     /* Premium wise slate-teal */
+    --primary-foreground: oklch(0.98 0.01 200);
+    --secondary: oklch(0.94 0.02 155);   /* Soft sage green tint */
+    --secondary-foreground: oklch(0.3 0.05 155); /* Deep sage green */
+    --muted: oklch(0.95 0.012 200);
+    --muted-foreground: oklch(0.48 0.02 200);
+    --accent: oklch(0.93 0.025 180);     /* Soft desaturated teal highlight */
+    --accent-foreground: oklch(0.28 0.045 180);
     --destructive: oklch(0.577 0.245 27.325);
     --destructive-foreground: oklch(1 0 0);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
+    --border: oklch(0.88 0.02 200);       /* Subtle slate-teal border */
+    --input: oklch(0.88 0.02 200);
+    --ring: oklch(0.55 0.04 200);
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
     --chart-3: oklch(0.398 0.07 227.392);
     --chart-4: oklch(0.828 0.189 84.429);
     --chart-5: oklch(0.769 0.188 70.08);
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
+    --sidebar: oklch(0.99 0.008 200);
+    --sidebar-foreground: oklch(0.24 0.03 200);
+    --sidebar-primary: oklch(0.38 0.06 200);
+    --sidebar-primary-foreground: oklch(0.98 0.01 200);
+    --sidebar-accent: oklch(0.93 0.025 180);
+    --sidebar-accent-foreground: oklch(0.28 0.045 180);
+    --sidebar-border: oklch(0.88 0.02 200);
+    --sidebar-ring: oklch(0.55 0.04 200);
     --font-sans:
         ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
@@ -66,38 +66,38 @@
 }
 
 .dark {
-    --background: oklch(0.145 0 0);
-    --foreground: oklch(0.985 0 0);
-    --card: oklch(0.205 0 0);
-    --card-foreground: oklch(0.985 0 0);
-    --popover: oklch(0.205 0 0);
-    --popover-foreground: oklch(0.985 0 0);
-    --primary: oklch(0.922 0 0);
-    --primary-foreground: oklch(0.205 0 0);
-    --secondary: oklch(0.269 0 0);
-    --secondary-foreground: oklch(0.985 0 0);
-    --muted: oklch(0.269 0 0);
-    --muted-foreground: oklch(0.708 0 0);
-    --accent: oklch(0.269 0 0);
-    --accent-foreground: oklch(0.985 0 0);
+    --background: oklch(0.14 0.025 205); /* Premium deep slate-teal charcoal */
+    --foreground: oklch(0.94 0.015 160);  /* Soft sage-tinted white */
+    --card: oklch(0.17 0.022 205);        /* Slate card */
+    --card-foreground: oklch(0.94 0.015 160);
+    --popover: oklch(0.17 0.022 205);
+    --popover-foreground: oklch(0.94 0.015 160);
+    --primary: oklch(0.82 0.07 155);     /* Elegant desaturated sage green */
+    --primary-foreground: oklch(0.16 0.03 155);
+    --secondary: oklch(0.20 0.02 205);    /* Dark slate */
+    --secondary-foreground: oklch(0.9 0.02 205);
+    --muted: oklch(0.20 0.02 205);
+    --muted-foreground: oklch(0.65 0.02 205);
+    --accent: oklch(0.24 0.03 190);      /* Dark teal highlight */
+    --accent-foreground: oklch(0.88 0.03 190);
     --destructive: oklch(0.704 0.191 22.216);
     --destructive-foreground: oklch(0.985 0 0);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 15%);
-    --ring: oklch(0.556 0 0);
+    --border: oklch(0.23 0.025 205 / 80%);
+    --input: oklch(0.23 0.025 205 / 80%);
+    --ring: oklch(0.82 0.07 155);
     --chart-1: oklch(0.488 0.243 264.376);
     --chart-2: oklch(0.696 0.17 162.48);
     --chart-3: oklch(0.769 0.188 70.08);
     --chart-4: oklch(0.627 0.265 303.9);
     --chart-5: oklch(0.645 0.246 16.439);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --sidebar: oklch(0.17 0.022 205);
+    --sidebar-foreground: oklch(0.94 0.015 160);
+    --sidebar-primary: oklch(0.82 0.07 155);
+    --sidebar-primary-foreground: oklch(0.16 0.03 155);
+    --sidebar-accent: oklch(0.24 0.03 190);
+    --sidebar-accent-foreground: oklch(0.88 0.03 190);
+    --sidebar-border: oklch(0.23 0.025 205 / 80%);
+    --sidebar-ring: oklch(0.82 0.07 155);
     --font-sans:
         ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",

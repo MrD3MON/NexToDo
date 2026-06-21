@@ -12,15 +12,29 @@ import {
     Users,
     X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState, lazy, Suspense } from "react";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 import type { Board, CardPriority } from "@/types/board";
 import { BoardAvatars } from "@/components/Board/BoardAvatars";
-import { BoardMembersPanel } from "@/components/Board/BoardMembersPanel";
-import { ArchivedItemsPanel } from "@/components/Board/ArchivedItemsPanel";
-import { BoardSettingsModal } from "@/components/Board/BoardSettingsModal";
+
+const BoardMembersPanel = lazy(() =>
+    import("@/components/Board/BoardMembersPanel").then((module) => ({
+        default: module.BoardMembersPanel,
+    })),
+);
+const ArchivedItemsPanel = lazy(() =>
+    import("@/components/Board/ArchivedItemsPanel").then((module) => ({
+        default: module.ArchivedItemsPanel,
+    })),
+);
+const BoardSettingsModal = lazy(() =>
+    import("@/components/Board/BoardSettingsModal").then((module) => ({
+        default: module.BoardSettingsModal,
+    })),
+);
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -439,20 +453,28 @@ export function BoardHeader({
                 </div>
             </div>
 
-            <BoardSettingsModal open={settingsOpen} onOpenChange={setSettingsOpen} board={board} />
+            <Suspense fallback={null}>
+                {settingsOpen && (
+                    <BoardSettingsModal open={settingsOpen} onOpenChange={setSettingsOpen} board={board} />
+                )}
 
-            <BoardMembersPanel
-                open={membersOpen}
-                onOpenChange={setMembersOpen}
-                boardId={board._id}
-                currentUserRole={board.role}
-            />
+                {membersOpen && (
+                    <BoardMembersPanel
+                        open={membersOpen}
+                        onOpenChange={setMembersOpen}
+                        boardId={board._id}
+                        currentUserRole={board.role}
+                    />
+                )}
 
-            <ArchivedItemsPanel
-                open={archivedOpen}
-                onOpenChange={setArchivedOpen}
-                boardId={board._id}
-            />
+                {archivedOpen && (
+                    <ArchivedItemsPanel
+                        open={archivedOpen}
+                        onOpenChange={setArchivedOpen}
+                        boardId={board._id}
+                    />
+                )}
+            </Suspense>
         </header>
     );
 }

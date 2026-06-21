@@ -1,4 +1,5 @@
 import { Draggable, Droppable } from "@hello-pangea/dnd";
+import React from "react";
 
 import type { ListWithCards } from "@/types/board";
 import { ListHeader } from "./ListHeader";
@@ -16,7 +17,7 @@ interface ListColumnProps {
     isReadOnly?: boolean;
 }
 
-export function ListColumn({
+function ListColumnComponent({
     list,
     index,
     boardColor,
@@ -101,3 +102,19 @@ export function ListColumn({
         </Draggable>
     );
 }
+
+export const ListColumn = React.memo(
+    ListColumnComponent,
+    (prevProps, nextProps) => {
+        return (
+            prevProps.index === nextProps.index &&
+            prevProps.boardColor === nextProps.boardColor &&
+            prevProps.isFresh === nextProps.isFresh &&
+            prevProps.isFiltered === nextProps.isFiltered &&
+            prevProps.isReadOnly === nextProps.isReadOnly &&
+            prevProps.list._id === nextProps.list._id &&
+            prevProps.list.title === nextProps.list.title &&
+            prevProps.list.cards === nextProps.list.cards
+        );
+    }
+);

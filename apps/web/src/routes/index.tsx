@@ -1,6 +1,6 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, Navigate } from "@tanstack/react-router";
 import { Authenticated, AuthLoading, Unauthenticated } from "convex/react";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import {
     LayoutGrid,
@@ -11,10 +11,12 @@ import {
     Sparkles,
     ArrowRight,
     CheckCircle2,
+    CheckSquare,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { SquigglyText } from "@/components/ui/squiggly-text";
+import { cn } from "@/lib/utils";
 import Text3DFlip from "@/components/ui/text-3d-flip";
 import { HexagonPattern } from "@/components/ui/hexagon-pattern";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
@@ -44,7 +46,7 @@ function LandingPage() {
 function LandingLoading() {
     return (
         <div className="min-h-[calc(100vh-3rem)] flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
+            <div className="h-8 w-8 animate-spin rounded-full border-2 border-zinc-500 border-t-transparent" />
         </div>
     );
 }
@@ -119,6 +121,84 @@ const perks = [
     { icon: CheckCircle2, label: "Cancel anytime" },
 ];
 
+const mockupColumns = [
+    {
+        title: "Backlog",
+        count: 4,
+        colClass: "bg-muted/40",
+        cards: [
+            {
+                titleWidth: "w-3/4",
+                tag: { label: "Design", bg: "bg-teal-500/10 text-teal-700 dark:text-teal-300 dark:bg-teal-500/20" },
+                priority: { label: "Medium", bg: "bg-amber-500/10 text-amber-700 dark:text-amber-300 dark:bg-amber-500/20" },
+                hasChecklist: true,
+                checklistDone: 2,
+                checklistTotal: 5,
+                isDone: false,
+            },
+            {
+                titleWidth: "w-1/2",
+                tag: { label: "Docs", bg: "bg-sky-500/10 text-sky-700 dark:text-sky-300 dark:bg-sky-500/20" },
+                priority: null,
+                hasChecklist: false,
+                checklistDone: 0,
+                checklistTotal: 0,
+                isDone: false,
+            }
+        ]
+    },
+    {
+        title: "In Progress",
+        count: 2,
+        colClass: "bg-accent/40 border border-border/80",
+        cards: [
+            {
+                titleWidth: "w-5/6",
+                tag: { label: "Feature", bg: "bg-primary/10 text-primary dark:bg-primary/20" },
+                priority: { label: "High", bg: "bg-orange-500/10 text-orange-700 dark:text-orange-300 dark:bg-orange-500/20" },
+                hasChecklist: true,
+                checklistDone: 4,
+                checklistTotal: 4,
+                isDone: false,
+            },
+            {
+                titleWidth: "w-2/3",
+                tag: { label: "Refactor", bg: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-500/20" },
+                priority: { label: "Low", bg: "bg-blue-500/10 text-blue-700 dark:text-blue-300 dark:bg-blue-500/20" },
+                hasChecklist: false,
+                checklistDone: 0,
+                checklistTotal: 0,
+                isDone: false,
+            }
+        ]
+    },
+    {
+        title: "Done",
+        count: 6,
+        colClass: "bg-muted/40",
+        cards: [
+            {
+                titleWidth: "w-2/3",
+                tag: { label: "Bug", bg: "bg-rose-500/10 text-rose-700 dark:text-rose-300 dark:bg-rose-500/20" },
+                priority: null,
+                hasChecklist: true,
+                checklistDone: 3,
+                checklistTotal: 3,
+                isDone: true,
+            },
+            {
+                titleWidth: "w-1/2",
+                tag: { label: "CI/CD", bg: "bg-indigo-500/10 text-indigo-700 dark:text-indigo-300 dark:bg-indigo-500/20" },
+                priority: null,
+                hasChecklist: false,
+                checklistDone: 0,
+                checklistTotal: 0,
+                isDone: true,
+            }
+        ]
+    }
+];
+
 function LandingContent() {
     return (
         <div className="min-h-[calc(100vh-3rem)] bg-background text-foreground overflow-x-hidden">
@@ -128,7 +208,7 @@ function LandingContent() {
                 <HexagonPattern
                     radius={48}
                     gap={4}
-                    className="fill-violet-500/[0.06] stroke-violet-500/[0.12] dark:fill-violet-500/[0.05] dark:stroke-violet-500/[0.10]"
+                    className="fill-primary/[0.04] stroke-primary/[0.09] dark:fill-primary/[0.02] dark:stroke-primary/[0.05]"
                     hexagons={[
                         [2, 2],
                         [4, 1],
@@ -145,25 +225,25 @@ function LandingContent() {
                 />
 
                 {/* Glow blobs — subtle in light, more visible in dark */}
-                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-violet-500/10 dark:bg-violet-600/15 rounded-full blur-[120px] pointer-events-none" />
-                <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-indigo-500/8 dark:bg-indigo-600/10 rounded-full blur-[90px] pointer-events-none" />
+                <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/[0.08] dark:bg-primary/[0.12] rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-accent/[0.06] dark:bg-accent/[0.10] rounded-full blur-[90px] pointer-events-none" />
 
                 {/* Badge */}
                 <FadeUp delay={0.05}>
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-300 text-sm font-medium mb-8">
-                        <Sparkles className="w-3.5 h-3.5" />
+                    <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/[0.04] text-primary text-xs font-semibold mb-8 backdrop-blur-sm">
+                        <Sparkles className="w-3.5 h-3.5 text-primary animate-pulse" />
                         Powered by real-time sync
                     </div>
                 </FadeUp>
 
                 {/* Headline */}
                 <FadeUp delay={0.1}>
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] max-w-4xl text-foreground">
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] max-w-4xl text-foreground bg-gradient-to-b from-foreground to-foreground/75 bg-clip-text text-transparent pb-1">
                         Organise tasks. <br className="hidden sm:block" />
                         <SquigglyText
                             scale={[7, 10]}
                             stepDuration={70}
-                            className="bg-gradient-to-r from-violet-600 via-fuchsia-500 to-indigo-500 dark:from-violet-400 dark:via-fuchsia-400 dark:to-indigo-400 bg-clip-text text-transparent"
+                            className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent"
                         >
                             Ship faster.
                         </SquigglyText>
@@ -186,13 +266,13 @@ function LandingContent() {
                     <Link to="/sign-in">
                         <div className="relative rounded-full overflow-hidden">
                             <ShineBorder
-                                shineColor={["#a855f7", "#818cf8", "#ec4899"]}
+                                shineColor={["hsl(var(--primary))", "hsl(var(--border))", "hsl(var(--accent))"]}
                                 duration={5}
                                 borderWidth={1.5}
                             />
                             <Button
                                 size="lg"
-                                className="relative bg-violet-600 hover:bg-violet-500 text-white rounded-full px-8 text-base font-semibold gap-2 transition-all duration-200 group"
+                                className="relative bg-primary text-primary-foreground hover:opacity-90 rounded-full px-8 text-base font-semibold gap-2 transition-all duration-200 group border border-border"
                             >
                                 Start for free
                                 <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -200,7 +280,7 @@ function LandingContent() {
                         </div>
                     </Link>
                     <Link to="/sign-in">
-                        <Button size="lg" variant="outline" className="rounded-full px-8 text-base">
+                        <Button size="lg" variant="outline" className="rounded-full px-8 text-base hover:bg-accent border border-border bg-background">
                             Sign in
                         </Button>
                     </Link>
@@ -213,7 +293,7 @@ function LandingContent() {
                             key={label}
                             className="flex items-center gap-1.5 text-sm text-muted-foreground"
                         >
-                            <Icon className="w-4 h-4 text-violet-500" />
+                            <Icon className="w-4 h-4 text-zinc-500 dark:text-zinc-400" />
                             {label}
                         </span>
                     ))}
@@ -221,52 +301,80 @@ function LandingContent() {
 
                 {/* Hero visual — glowing board mockup */}
                 <FadeUp delay={0.42} className="mt-20 w-full max-w-4xl mx-auto">
-                    <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-2xl shadow-violet-500/10 dark:shadow-violet-900/30">
+                    <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-2xl shadow-primary/[0.03] dark:shadow-black/60">
                         <ShineBorder
-                            shineColor={["#7c3aed", "#4f46e5", "#db2777"]}
+                            shineColor={["hsl(var(--primary))", "hsl(var(--border))", "hsl(var(--accent))"]}
                             duration={8}
                             borderWidth={1}
                         />
                         {/* Fake board UI */}
                         <div className="p-6">
                             <div className="flex items-center gap-2 mb-5">
-                                <div className="w-3 h-3 rounded-full bg-red-400/70" />
-                                <div className="w-3 h-3 rounded-full bg-yellow-400/70" />
-                                <div className="w-3 h-3 rounded-full bg-green-400/70" />
+                                <div className="w-3 h-3 rounded-full bg-border" />
+                                <div className="w-3 h-3 rounded-full bg-border" />
+                                <div className="w-3 h-3 rounded-full bg-border" />
                                 <div className="ml-4 h-5 w-40 rounded bg-muted" />
                             </div>
                             <div className="grid grid-cols-3 gap-4">
-                                {[
-                                    { title: "Backlog", count: 4, colClass: "bg-muted/50" },
-                                    {
-                                        title: "In Progress",
-                                        count: 2,
-                                        colClass: "bg-violet-500/10 dark:bg-violet-500/20",
-                                    },
-                                    { title: "Done", count: 6, colClass: "bg-emerald-500/10" },
-                                ].map((col) => (
+                                {mockupColumns.map((col) => (
                                     <div
                                         key={col.title}
-                                        className={`rounded-xl p-3 ${col.colClass} border border-border`}
+                                        className={`rounded-xl p-3 ${col.colClass} border border-border/60`}
                                     >
                                         <div className="flex items-center justify-between mb-3">
                                             <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                                                 {col.title}
                                             </span>
-                                            <span className="text-xs bg-muted rounded-full px-2 py-0.5 text-muted-foreground">
+                                            <span className="text-xs bg-muted/80 rounded-full px-2 py-0.5 text-muted-foreground">
                                                 {col.count}
                                             </span>
                                         </div>
                                         <div className="space-y-2">
-                                            {Array.from({
-                                                length: col.count > 2 ? 2 : col.count,
-                                            }).map((_, i) => (
+                                            {col.cards.map((card, cardIdx) => (
                                                 <div
-                                                    key={i}
-                                                    className="rounded-lg bg-card border border-border p-2.5"
+                                                    key={cardIdx}
+                                                    className="rounded-lg bg-card border border-border/40 p-3 shadow-sm hover:shadow-md transition-all duration-200 text-left"
                                                 >
-                                                    <div className="h-2 w-3/4 rounded bg-muted mb-1.5" />
-                                                    <div className="h-1.5 w-1/2 rounded bg-muted/60" />
+                                                    {/* Tags Row */}
+                                                    <div className="flex flex-wrap gap-1.5 mb-2">
+                                                        {card.tag && (
+                                                            <span className={cn("text-[9px] font-medium px-2 py-0.5 rounded-full", card.tag.bg)}>
+                                                                {card.tag.label}
+                                                            </span>
+                                                        )}
+                                                        {card.priority && (
+                                                            <span className={cn("text-[9px] font-medium px-2 py-0.5 rounded-full", card.priority.bg)}>
+                                                                {card.priority.label}
+                                                            </span>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Title Line (Skeleton) */}
+                                                    <div className={cn("h-2 rounded bg-muted/70 mb-1.5", card.titleWidth, card.isDone && "line-through opacity-60")} />
+                                                    <div className="h-1.5 w-1/2 rounded bg-muted/40 mb-3" />
+
+                                                    {/* Bottom Metadata Row */}
+                                                    <div className="flex items-center justify-between text-[10px] text-muted-foreground pt-2 border-t border-border/20">
+                                                        <div className="flex items-center gap-2">
+                                                            {card.hasChecklist && (
+                                                                <span className={cn("flex items-center gap-1", card.checklistDone === card.checklistTotal ? "text-primary font-medium" : "")}>
+                                                                    <CheckSquare className="w-3 h-3" />
+                                                                    {card.checklistDone}/{card.checklistTotal}
+                                                                </span>
+                                                            )}
+                                                            {card.isDone && (
+                                                                <span className="flex items-center gap-0.5 text-primary font-medium">
+                                                                    <CheckCircle2 className="w-3 h-3" />
+                                                                    Done
+                                                                </span>
+                                                            )}
+                                                        </div>
+                                                        
+                                                        {/* Fake avatar bubble */}
+                                                        <div className="w-4 h-4 rounded-full bg-muted-foreground/20 border border-border flex items-center justify-center text-[7px] font-bold">
+                                                            {col.title[0]}
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             ))}
                                         </div>
@@ -279,10 +387,10 @@ function LandingContent() {
             </section>
 
             {/* ── FEATURES ── */}
-            <section className="py-24 px-4 border-t border-border">
+            <section className="py-24 px-4 border-t border-border/60">
                 <div className="max-w-6xl mx-auto">
                     <FadeUp className="text-center mb-4">
-                        <span className="text-violet-600 dark:text-violet-400 text-sm font-semibold uppercase tracking-widest">
+                        <span className="text-primary text-xs font-semibold uppercase tracking-widest">
                             Features
                         </span>
                     </FadeUp>
@@ -290,8 +398,8 @@ function LandingContent() {
                         <h2 className="text-3xl md:text-5xl font-bold text-foreground">
                             <Text3DFlip
                                 className="inline-flex text-3xl md:text-5xl font-bold"
-                                textClassName="text-foreground"
-                                flipTextClassName="text-violet-500"
+                                textClassName="text-foreground bg-gradient-to-b from-foreground to-foreground/60 bg-clip-text text-transparent"
+                                flipTextClassName="text-primary"
                                 staggerDuration={0.04}
                             >
                                 Everything you need
@@ -313,7 +421,7 @@ function LandingContent() {
             </section>
 
             {/* ── ICON STATS ── */}
-            <section className="py-20 px-4 border-t border-border">
+            <section className="py-20 px-4 border-t border-border/60">
                 <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
                     {[
                         { icon: LayoutGrid, label: "Boards", value: "Unlimited" },
@@ -323,8 +431,8 @@ function LandingContent() {
                     ].map(({ icon: Icon, label, value }, i) => (
                         <FadeUp key={label} delay={i * 0.08}>
                             <div className="flex flex-col items-center text-center gap-3">
-                                <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
-                                    <Icon className="w-6 h-6 text-violet-600 dark:text-violet-400" />
+                                <div className="p-3 rounded-xl bg-muted border border-border shadow-sm">
+                                    <Icon className="w-6 h-6 text-primary" />
                                 </div>
                                 <span className="text-2xl font-bold text-foreground">{value}</span>
                                 <span className="text-sm text-muted-foreground">{label}</span>
@@ -335,24 +443,24 @@ function LandingContent() {
             </section>
 
             {/* ── CTA ── */}
-            <section className="py-28 px-4 border-t border-border">
+            <section className="py-28 px-4 border-t border-border/60">
                 <FadeUp className="max-w-lg mx-auto">
                     <NeonGradientCard
-                        neonColors={{ firstColor: "#7c3aed", secondColor: "#4f46e5" }}
-                        borderSize={2}
+                        neonColors={{ firstColor: "hsl(var(--primary))", secondColor: "hsl(var(--accent))" }}
+                        borderSize={1.5}
                         borderRadius={24}
                         className="w-full"
                     >
-                        <div className="flex flex-col items-center text-center gap-5 py-4">
-                            <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20">
-                                <Shield className="w-7 h-7 text-violet-600 dark:text-violet-400" />
+                        <div className="flex flex-col items-center text-center gap-5 py-4 bg-card">
+                            <div className="p-3 rounded-xl bg-muted border border-border shadow-sm">
+                                <Shield className="w-7 h-7 text-muted-foreground" />
                             </div>
                             <h2 className="text-2xl md:text-3xl font-bold text-foreground leading-snug">
                                 Ready to{" "}
                                 <SquigglyText
                                     scale={[5, 8]}
                                     stepDuration={75}
-                                    className="text-violet-600 dark:text-violet-400"
+                                    className="bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent"
                                 >
                                     get organised?
                                 </SquigglyText>
@@ -363,7 +471,7 @@ function LandingContent() {
                             <Link to="/sign-in">
                                 <Button
                                     size="lg"
-                                    className="bg-violet-600 hover:bg-violet-500 text-white rounded-full px-8 font-semibold gap-2 group transition-all duration-200"
+                                    className="bg-primary text-primary-foreground hover:opacity-90 rounded-full px-8 font-semibold gap-2 group transition-all duration-200 shadow-md border border-border"
                                 >
                                     Create your first board
                                     <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
@@ -383,13 +491,5 @@ function LandingContent() {
 }
 
 function RedirectToDashboard() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate({ to: "/dashboard", replace: true });
-    }, [navigate]);
-    return (
-        <div className="min-h-[calc(100vh-3rem)] flex items-center justify-center">
-            <div className="h-8 w-8 animate-spin rounded-full border-2 border-violet-500 border-t-transparent" />
-        </div>
-    );
+    return <Navigate to="/dashboard" replace />;
 }

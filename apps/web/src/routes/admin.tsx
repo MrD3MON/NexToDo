@@ -1,5 +1,5 @@
 import { api } from "@NexToDo/backend/convex/_generated/api";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, Navigate } from "@tanstack/react-router";
 import { Authenticated, AuthLoading, Unauthenticated, useMutation, useQuery } from "convex/react";
 import { Shield, Trash2, UserCog, Users, ChevronLeft, Crown, User, Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -36,14 +36,6 @@ function RouteComponent() {
 
 function AdminPageContent() {
     const currentRole = useQuery(api.auth.getMyRole);
-    const navigate = useNavigate();
-
-    // Redirect non-admins away
-    useEffect(() => {
-        if (currentRole === "user") {
-            navigate({ to: "/dashboard" });
-        }
-    }, [currentRole, navigate]);
 
     if (currentRole === undefined) {
         return (
@@ -51,6 +43,10 @@ function AdminPageContent() {
                 <div className="h-7 w-7 animate-spin rounded-full border-4 border-primary border-t-transparent" />
             </div>
         );
+    }
+
+    if (currentRole === "user") {
+        return <Navigate to="/dashboard" replace={true} />;
     }
 
     if (currentRole !== "admin") return null;
@@ -306,9 +302,5 @@ function AdminPanel() {
 }
 
 function RedirectToSignIn() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate({ to: "/sign-in" });
-    }, [navigate]);
-    return null;
+    return <Navigate to="/sign-in" replace={true} />;
 }

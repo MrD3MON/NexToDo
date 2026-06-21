@@ -1,5 +1,5 @@
 import { api } from "@NexToDo/backend/convex/_generated/api";
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, Navigate } from "@tanstack/react-router";
 import { Authenticated, AuthLoading, Unauthenticated, useQuery } from "convex/react";
 import { Kanban, ListTodo, CheckCircle2, AlertTriangle, CalendarClock, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -353,13 +353,5 @@ function DashboardContent() {
 }
 
 function RedirectToSignIn() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate({ to: "/sign-in" });
-    }, [navigate]);
-    return (
-        <div className="min-h-[calc(100vh-3rem)] flex items-center justify-center">
-            <p className="text-muted-foreground">Redirecting to sign in...</p>
-        </div>
-    );
+    return <Navigate to="/sign-in" replace={true} />;
 }

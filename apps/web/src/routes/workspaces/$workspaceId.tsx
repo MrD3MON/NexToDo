@@ -15,7 +15,7 @@ import {
     Settings,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useNavigate } from "@tanstack/react-router";
+import { useNavigate, Navigate } from "@tanstack/react-router";
 import { toast } from "sonner";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -404,15 +404,8 @@ function MembersSection({
 }
 
 function WorkspaceSettingsContent({ workspaceId }: { workspaceId: Id<"workspaces"> }) {
-    const navigate = useNavigate();
     const currentUser = useQuery(api.auth.getCurrentUser);
     const workspace = useQuery(api.workspaces.getById, { workspaceId });
-
-    useEffect(() => {
-        if (workspace === null) {
-            navigate({ to: "/boards" });
-        }
-    }, [workspace, navigate]);
 
     if (workspace === undefined || currentUser === undefined) {
         return (
@@ -422,7 +415,9 @@ function WorkspaceSettingsContent({ workspaceId }: { workspaceId: Id<"workspaces
         );
     }
 
-    if (!workspace) return null;
+    if (workspace === null) {
+        return <Navigate to="/boards" replace={true} />;
+    }
 
     const myMembership = workspace.members.find((m: any) => m.userId === currentUser?._id);
     const myRole = myMembership?.role ?? "member";
@@ -491,9 +486,5 @@ function RouteComponent() {
 }
 
 function RedirectToSignIn() {
-    const navigate = useNavigate();
-    useEffect(() => {
-        navigate({ to: "/sign-in" });
-    }, [navigate]);
-    return null;
+    return <Navigate to="/sign-in" replace={true} />;
 }

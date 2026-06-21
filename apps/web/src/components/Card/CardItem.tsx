@@ -1,10 +1,13 @@
 import { Draggable } from "@hello-pangea/dnd";
 import { Calendar, CheckSquare, MessageSquare } from "lucide-react";
-import { useState } from "react";
+import React, { useState, lazy, Suspense } from "react";
 
 import type { Card } from "@/types/board";
 import { PRIORITY_CONFIG } from "@/lib/constants";
-import { CardModal } from "./CardModal";
+
+const CardModal = lazy(() =>
+    import("./CardModal").then((module) => ({ default: module.CardModal })),
+);
 
 interface CardItemProps {
     card: Card;
@@ -12,7 +15,7 @@ interface CardItemProps {
     isReadOnly?: boolean;
 }
 
-export function CardItem({ card, index, isReadOnly = false }: CardItemProps) {
+function CardItemComponent({ card, index, isReadOnly = false }: CardItemProps) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const hasDueDate = !!card.dueDate;
@@ -113,13 +116,34 @@ export function CardItem({ card, index, isReadOnly = false }: CardItemProps) {
             </Draggable>
 
             {isModalOpen && (
-                <CardModal
-                    cardId={card._id}
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                    isReadOnly={isReadOnly}
-                />
+                <Suspense fallback={null}>
+                    <CardModal
+                        cardId={card._id}
+                        isOpen={isModalOpen}
+                        onClose={() => setIsModalOpen(false)}
+                        isReadOnly={isReadOnly}
+                    />
+                </Suspense>
             )}
         </>
     );
 }
+
+export const CardItem = React.memo(
+    CardItemComponent,
+    (prevProps, nextProps) => {
+        return (
+            prevProps.index === nextProps.index &&
+            prevProps.isReadOnly === nextProps.isReadOnly &&
+            prevProps.card._id === nextProps.card._id &&
+            prevProps.card.title === nextProps.card.title &&
+            prevProps.card.coverImage === nextProps.card.coverImage &&
+            prevProps.card.priority === nextProps.card.priority &&
+            prevProps.card.dueDate === nextProps.card.dueDate &&
+            prevProps.card.completed === nextProps.card.completed &&
+            prevProps.card.description === nextProps.card.description &&
+            prevProps.card.checklistItemsTotal === nextProps.card.checklistItemsTotal &&
+            prevProps.card.checklistItemsCompleted === nextProps.card.checklistItemsCompleted
+        );
+    }
+);

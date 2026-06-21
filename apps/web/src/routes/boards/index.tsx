@@ -22,13 +22,14 @@ function BoardsRoute() {
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
     const [restoringBoardId, setRestoringBoardId] = useState<Id<"boards"> | null>(null);
     const [selectedWorkspaceId, setSelectedWorkspaceId] = useState<Id<"workspaces"> | null>(null);
+    const [activeTab, setActiveTab] = useState("active");
 
     const boards = useQuery(api.boards.getAll);
-    const archived = useQuery(api.boards.getArchived, {});
+    const archived = useQuery(api.boards.getArchived, activeTab === "archived" ? {} : "skip");
     const workspaces = useQuery(api.workspaces.getMyWorkspaces);
     const restoreBoard = useMutation(api.boards.restore);
 
-    const isLoading = boards === undefined || archived === undefined;
+    const isLoading = boards === undefined || (activeTab === "archived" && archived === undefined);
     const archivedBoards = archived?.boards ?? [];
 
     const filteredBoards = (boards ?? []).filter(
@@ -120,7 +121,7 @@ function BoardsRoute() {
                     </div>
 
                     {/* Tabs */}
-                    <Tabs defaultValue="active" className="space-y-5">
+                    <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-5">
                         <TabsList>
                             <TabsTrigger value="active" className="gap-2">
                                 Active
@@ -128,7 +129,9 @@ function BoardsRoute() {
                             </TabsTrigger>
                             <TabsTrigger value="archived" className="gap-2">
                                 Archived
-                                <Badge variant="secondary">{archivedBoards.length}</Badge>
+                                {archived !== undefined && (
+                                    <Badge variant="secondary">{archivedBoards.length}</Badge>
+                                )}
                             </TabsTrigger>
                         </TabsList>
 
